@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Clock, Globe, BookOpen, Search, Sparkles } from "lucide-react";
+import { Clock, Globe, BookOpen, Search, Sparkles, Mail, Palette, Bot } from "lucide-react";
 
 const Options = () => {
   const navigate = useNavigate();
@@ -61,18 +61,48 @@ const Options = () => {
           </Button>
         </div>
 
-        {/* Search Mode */}
+        {/* Trend Letter */}
         <div 
           className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
-          onClick={() => navigate("/timeline")}
+          onClick={() => navigate("/trendletter")}
         >
-          <div className="h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-            <Search size={64} className="text-primary opacity-70" />
+          <div className="h-40 bg-retrored/20 rounded-lg mb-4 flex items-center justify-center">
+            <Mail size={64} className="text-primary opacity-70" />
           </div>
-          <h2 className="text-xl font-display font-bold mb-2">Style Search</h2>
-          <p className="text-gray-600 mb-4">Looking for something specific? Search by keyword.</p>
-          <Button className="mt-auto" onClick={() => navigate("/timeline")}>
-            Go to Search
+          <h2 className="text-xl font-display font-bold mb-2">Trend Letter</h2>
+          <p className="text-gray-600 mb-4">Subscribe to weekly style throwbacks and fashion facts.</p>
+          <Button className="mt-auto" onClick={() => navigate("/trendletter")}>
+            Subscribe
+          </Button>
+        </div>
+
+        {/* Mood Board Builder */}
+        <div 
+          className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+          onClick={() => navigate("/moodboard")}
+        >
+          <div className="h-40 bg-bubblegum/20 rounded-lg mb-4 flex items-center justify-center">
+            <Palette size={64} className="text-primary opacity-70" />
+          </div>
+          <h2 className="text-xl font-display font-bold mb-2">Mood Board Builder</h2>
+          <p className="text-gray-600 mb-4">Create virtual fashion mood boards with vintage pieces and textures.</p>
+          <Button className="mt-auto" onClick={() => navigate("/moodboard")}>
+            Create Board
+          </Button>
+        </div>
+
+        {/* AI Fashion Assistant */}
+        <div 
+          className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+          onClick={() => navigate("/ai-assistant")}
+        >
+          <div className="h-40 bg-lavender/20 rounded-lg mb-4 flex items-center justify-center">
+            <Bot size={64} className="text-primary opacity-70" />
+          </div>
+          <h2 className="text-xl font-display font-bold mb-2">Fashion History AI</h2>
+          <p className="text-gray-600 mb-4">Chat with an AI assistant about fashion history and trends.</p>
+          <Button className="mt-auto" onClick={() => navigate("/ai-assistant")}>
+            Start Chat
           </Button>
         </div>
       </div>
