@@ -1,10 +1,14 @@
-
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import DecadeContent, { DecadeTrend } from "./DecadeContent";
 import StyleFilter, { StyleType } from "./StyleFilter";
+
+interface TimelineProps {
+  searchQuery: string;
+  onDecadeChange: (decade: string) => void;
+}
 
 const decadeData = [
   {
@@ -19,7 +23,7 @@ const decadeData = [
         name: "Mod Fashion",
         description: "Mod fashion embraced bold, geometric patterns, mini skirts, and go-go boots.",
         image: "https://images.unsplash.com/photo-1583895551859-95c06c12fc37?q=80&w=1476&auto=format&fit=crop",
-        styles: ["Glam", "Streetwear"],
+        styles: ["Glam", "Streetwear"] as StyleType[],
         icons: ["Twiggy", "Jean Shrimpton", "Mary Quant"],
         pieces: ["Mini skirts", "Go-go boots", "Color-block dresses", "Shift dresses"],
         popCulture: ["The Beatles", "Andy Warhol", "British Invasion music"]
@@ -29,7 +33,7 @@ const decadeData = [
         name: "Hippie Movement",
         description: "Peace, love, and self-expression defined the hippie aesthetic with tie-dye, bell-bottoms, and flowing silhouettes.",
         image: "https://images.unsplash.com/photo-1604278003587-46d385810306?q=80&w=1374&auto=format&fit=crop",
-        styles: ["Alt"],
+        styles: ["Alt"] as StyleType[],
         icons: ["Janis Joplin", "Jimi Hendrix", "Jane Birkin"],
         pieces: ["Bell bottoms", "Tie-dye shirts", "Fringe vests", "Peasant blouses", "Headbands"],
         popCulture: ["Woodstock", "Vietnam War protests", "Psychedelic rock"]
@@ -212,10 +216,9 @@ const decadeData = [
   }
 ];
 
-const Timeline = () => {
+const Timeline = ({ searchQuery, onDecadeChange }: TimelineProps) => {
   const [selectedDecade, setSelectedDecade] = useState<string>("2020s");
   const [selectedStyle, setSelectedStyle] = useState<StyleType>("All");
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const timelineRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
@@ -227,6 +230,11 @@ const Timeline = () => {
       setSelectedDecade(decade);
     }
   };
+
+  // Update parent component when selected decade changes
+  useEffect(() => {
+    onDecadeChange(selectedDecade);
+  }, [selectedDecade, onDecadeChange]);
 
   // Get next/previous decades
   const currentIndex = decadeData.findIndex(decade => decade.id === selectedDecade);
@@ -352,7 +360,7 @@ const Timeline = () => {
               description={decade.description}
               styles={decade.styles}
               trends={decade.trends}
-              bgColor={decade.bgColor}
+              bgColor=""
               selectedStyle={selectedStyle}
             />
           </div>
