@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,34 +62,63 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Fashion-inspired custom colors
+				bubblegum: '#FF88BB',
+				mint: '#AAFFDD',
+				lavender: '#CCBBFF',
+				electricblue: '#33CCFF',
+				sunnyellow: '#FFDD44',
+				retrored: '#FF5555',
+				vintagecream: '#FFF8E7',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			fontFamily: {
+				display: ['Playfair Display', 'serif'],
+				sans: ['Inter', 'sans-serif'],
+			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' }
+				},
+				'pulse-gentle': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'polaroid-appear': {
+					'0%': { opacity: '0', transform: 'scale(0.95) rotate(-2deg)' },
+					'100%': { opacity: '1', transform: 'scale(1) rotate(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
+				'shimmer': 'shimmer 3s linear infinite',
+				'spin-slow': 'spin-slow 8s linear infinite',
+				'polaroid-appear': 'polaroid-appear 0.5s ease-out forwards'
 			}
 		}
 	},

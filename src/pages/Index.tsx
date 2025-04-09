@@ -1,12 +1,20 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Timeline from "@/components/Timeline";
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    console.log("Searching for:", query);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navbar onSearch={handleSearch} />
+      <Timeline />
     </div>
   );
 };
