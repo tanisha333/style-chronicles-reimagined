@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Options from "./pages/Options";
 import NotFound from "./pages/NotFound";
+import TrendMap from "./pages/TrendMap";
+import HistoryBytes from "./pages/HistoryBytes";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ const App = () => (
           <Route path="/" element={<Login />} />
           <Route path="/options" element={<Options />} />
           <Route path="/timeline" element={<Index />} />
+          <Route path="/trendmap" element={<TrendMap />} />
+          <Route path="/history-bytes" element={<HistoryBytes />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

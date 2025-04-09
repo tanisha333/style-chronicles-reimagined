@@ -1,9 +1,11 @@
+
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
-import DecadeContent, { DecadeTrend } from "./DecadeContent";
-import StyleFilter, { StyleType } from "./StyleFilter";
+import DecadeContent from "./DecadeContent";
+import StyleFilter from "./StyleFilter";
+import { StyleType } from "@/lib/types";
 
 interface TimelineProps {
   searchQuery: string;
