@@ -1,11 +1,31 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Timeline from "@/components/Timeline";
+import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentDecade, setCurrentDecade] = useState<string>("2020s");
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Parse query parameters
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const decadeParam = searchParams.get("decade");
+    const styleParam = searchParams.get("style");
+    
+    if (decadeParam && ["1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"].includes(decadeParam)) {
+      setCurrentDecade(decadeParam);
+    }
+    
+    if (styleParam) {
+      setSearchQuery(styleParam);
+    }
+  }, [location]);
   
   // Map decades to background classes
   const decadeBackgrounds: Record<string, string> = {
@@ -50,6 +70,17 @@ const Index = () => {
   return (
     <div className="min-h-screen transition-all duration-500">
       <Navbar onSearch={handleSearch} />
+      <div className="fixed top-4 left-4 z-50">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="bg-white/80 backdrop-blur-md"
+          onClick={() => navigate("/options")}
+        >
+          <Home className="h-4 w-4 mr-2" />
+          Menu
+        </Button>
+      </div>
       <Timeline 
         searchQuery={searchQuery} 
         onDecadeChange={handleDecadeChange} 
