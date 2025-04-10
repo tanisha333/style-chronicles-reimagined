@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { Home, Send, CheckCircle, Calendar, Palette, Music, Sparkles, Lightbulb } from "lucide-react";
+import { Home, Send, CheckCircle, Calendar, Palette, Music, Sparkles, Lightbulb, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 
