@@ -1,21 +1,33 @@
 
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface NavbarProps {
   onSearch: (query: string) => void;
+  currentQuery?: string;
 }
 
-const Navbar = ({ onSearch }: NavbarProps) => {
+const Navbar = ({ onSearch, currentQuery = "" }: NavbarProps) => {
   const [expandedSearch, setExpandedSearch] = useState(false);
+  const [searchValue, setSearchValue] = useState(currentQuery);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setSearchValue(currentQuery);
+  }, [currentQuery]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const query = formData.get("search") as string;
-    onSearch(query);
+    onSearch(searchValue);
+  };
+
+  const handleClearSearch = () => {
+    setSearchValue("");
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
   };
 
   const toggleSearch = () => {
@@ -33,12 +45,28 @@ const Navbar = ({ onSearch }: NavbarProps) => {
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
+              ref={searchInputRef}
               name="search"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search jeans, vintage looks, 90s fashion..."
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary/50 focus:bg-secondary transition-all"
+              className="w-full pl-10 pr-12 py-2 rounded-full bg-secondary/50 focus:bg-secondary transition-all"
             />
+            {searchValue && (
+              <button 
+                type="button" 
+                className="absolute right-14 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                onClick={handleClearSearch}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
           </div>
-          <Button type="submit" size="sm" className="rounded-full absolute right-1 top-1/2 transform -translate-y-1/2">
+          <Button 
+            type="submit" 
+            size="sm" 
+            className="rounded-full absolute right-1 top-1/2 transform -translate-y-1/2"
+          >
             Search
           </Button>
         </form>
@@ -51,10 +79,17 @@ const Navbar = ({ onSearch }: NavbarProps) => {
               </Button>
               <Input
                 name="search"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search styles..."
                 className="flex-1 rounded-full bg-secondary/50"
                 autoFocus
               />
+              {searchValue && (
+                <Button type="button" variant="ghost" size="icon" onClick={handleClearSearch} className="ml-1">
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
               <Button type="submit" size="sm" className="ml-2 rounded-full">
                 Search
               </Button>

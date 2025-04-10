@@ -15,7 +15,16 @@ export type StyleType =
   | "Vintage"
   | "Retro"
   | "Athleisure"
-  | "Formal";
+  | "Formal"
+  | "Baggy"
+  | "Women"
+  | "Wide leg"
+  | "Blue"
+  | "Mom"
+  | "Casual"
+  | "Bell bottom"
+  | "Black"
+  | "Idea";
 
 export interface DecadeTrend {
   id: number;
@@ -26,4 +35,11 @@ export interface DecadeTrend {
   icons: string[];
   pieces: string[];
   popCulture: string[];
+}
+
+export interface SearchFilter {
+  label: string;
+  value: string;
+  image?: string;
+  backgroundColor: string;
 }

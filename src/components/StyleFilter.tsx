@@ -2,26 +2,7 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { StyleType as LibStyleType } from "@/lib/types";
-
-// Export the StyleType to match the one in lib/types.d.ts
-export type StyleType = 
-  | "All"
-  | "Streetwear" 
-  | "Glam" 
-  | "Grunge" 
-  | "Disco" 
-  | "Preppy" 
-  | "Alt" 
-  | "Minimalist"
-  | "Hippie"
-  | "Punk"
-  | "Boho"
-  | "Y2K"
-  | "Vintage"
-  | "Retro"
-  | "Athleisure"
-  | "Formal";
+import { StyleType } from "@/lib/types";
 
 interface StyleFilterProps {
   selectedStyle: StyleType;
@@ -64,7 +45,16 @@ const StyleFilter: React.FC<StyleFilterProps> = ({
     Vintage: "bg-vintagecream hover:bg-vintagecream/90 text-gray-700",
     Retro: "bg-mint/20 hover:bg-mint/30 text-emerald-700",
     Athleisure: "bg-gray-300 hover:bg-gray-400 text-gray-700",
-    Formal: "bg-gray-400 hover:bg-gray-500 text-gray-900"
+    Formal: "bg-gray-400 hover:bg-gray-500 text-gray-900",
+    Baggy: "bg-pink-200 hover:bg-pink-300 text-pink-900",
+    Women: "bg-amber-100 hover:bg-amber-200 text-amber-900",
+    "Wide leg": "bg-lime-100 hover:bg-lime-200 text-lime-900",
+    Blue: "bg-blue-200 hover:bg-blue-300 text-blue-900",
+    Mom: "bg-sky-200 hover:bg-sky-300 text-sky-900",
+    Casual: "bg-cyan-200 hover:bg-cyan-300 text-cyan-900",
+    "Bell bottom": "bg-purple-200 hover:bg-purple-300 text-purple-900",
+    Black: "bg-red-200 hover:bg-red-300 text-red-900",
+    Idea: "bg-yellow-100 hover:bg-yellow-200 text-yellow-900"
   };
 
   return (
