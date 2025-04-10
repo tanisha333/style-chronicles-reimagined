@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Clock, Globe, BookOpen, Search, Sparkles, Mail, Palette, Bot } from "lucide-react";
+import { Clock, Globe, BookOpen, Mail, Palette } from "lucide-react";
 
 const Options = () => {
   const navigate = useNavigate();
@@ -88,21 +88,6 @@ const Options = () => {
           <p className="text-gray-600 mb-4">Create virtual fashion mood boards with vintage pieces and textures.</p>
           <Button className="mt-auto" onClick={() => navigate("/moodboard")}>
             Create Board
-          </Button>
-        </div>
-
-        {/* AI Fashion Assistant */}
-        <div 
-          className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
-          onClick={() => navigate("/ai-assistant")}
-        >
-          <div className="h-40 bg-lavender/20 rounded-lg mb-4 flex items-center justify-center">
-            <Bot size={64} className="text-primary opacity-70" />
-          </div>
-          <h2 className="text-xl font-display font-bold mb-2">Fashion History AI</h2>
-          <p className="text-gray-600 mb-4">Chat with an AI assistant about fashion history and trends.</p>
-          <Button className="mt-auto" onClick={() => navigate("/ai-assistant")}>
-            Start Chat
           </Button>
         </div>
       </div>

@@ -31,9 +31,20 @@ const TrendMap = () => {
       </div>
 
       <div className="container mx-auto pt-24 px-4 pb-16">
-        <div className="flex items-center gap-3 mb-6">
-          <Globe className="h-8 w-8 text-primary" />
-          <h1 className="text-4xl md:text-5xl font-display font-bold">Global Trend Map</h1>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+          <div className="flex items-center gap-3">
+            <Globe className="h-8 w-8 text-primary" />
+            <h1 className="text-4xl md:text-5xl font-display font-bold">Global Trend Map</h1>
+          </div>
+          
+          <Button 
+            variant="default" 
+            size="sm" 
+            className="w-auto"
+            onClick={() => navigate("/options")}
+          >
+            Explore Options
+          </Button>
         </div>
         
         <p className="text-lg text-gray-700 mb-8">

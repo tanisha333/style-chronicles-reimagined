@@ -12,7 +12,6 @@ import TrendMap from "./pages/TrendMap";
 import HistoryBytes from "./pages/HistoryBytes";
 import TrendLetter from "./pages/TrendLetter";
 import MoodBoard from "./pages/MoodBoard";
-import AIAssistant from "./pages/AIAssistant";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +29,6 @@ const App = () => (
           <Route path="/history-bytes" element={<HistoryBytes />} />
           <Route path="/trendletter" element={<TrendLetter />} />
           <Route path="/moodboard" element={<MoodBoard />} />
-          <Route path="/ai-assistant" element={<AIAssistant />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
