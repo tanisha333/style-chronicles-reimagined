@@ -1,5 +1,6 @@
 
 export type StyleType = 
+  | "All"
   | "Streetwear" 
   | "Glam" 
   | "Grunge" 
