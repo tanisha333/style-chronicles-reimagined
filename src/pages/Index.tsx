@@ -1,10 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Timeline from "@/components/Timeline";
 import SearchResults from "@/components/SearchResults";
 import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
+import { Home, PenSquare } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -319,10 +322,29 @@ const Index = () => {
       </div>
       
       {showTimeline && !searchQuery ? (
-        <Timeline 
-          searchQuery={searchQuery} 
-          onDecadeChange={handleDecadeChange} 
-        />
+        <div className="flex flex-col md:flex-row">
+          <div className="md:w-3/4">
+            <Timeline 
+              searchQuery={searchQuery} 
+              onDecadeChange={handleDecadeChange} 
+            />
+          </div>
+          <div className="md:w-1/4 px-4 pt-20">
+            <Card className="bg-white/80 backdrop-blur-md">
+              <CardContent className="p-4">
+                <h3 className="text-lg font-display font-medium mb-3">Quick Tools</h3>
+                <div className="space-y-2">
+                  <Link to="/moodboard">
+                    <Button variant="outline" className="w-full justify-start">
+                      <PenSquare className="h-4 w-4 mr-2" />
+                      Create Mood Board
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       ) : (
         <div>
           <SearchResults query={searchQuery} trends={decadeData} />
