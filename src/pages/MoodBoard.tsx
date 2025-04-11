@@ -1,7 +1,6 @@
 
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Home, Download, Plus, Trash2, Share2, Save } from "lucide-react";
@@ -20,7 +19,6 @@ interface DraggableItem {
 const MoodBoard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [searchQuery, setSearchQuery] = useState("");
   const [items, setItems] = useState<DraggableItem[]>([
     { id: '1', type: 'image', content: 'https://picsum.photos/id/237/200/300', position: { x: 50, y: 50 }, width: 150, height: 150, rotation: 0 },
     { id: '2', type: 'color', content: '#FDA4AF', position: { x: 250, y: 100 }, width: 100, height: 100, rotation: 0 },
@@ -29,11 +27,6 @@ const MoodBoard = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const boardRef = useRef<HTMLDivElement>(null);
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    console.log("Searching for:", query);
-  };
 
   const handleMouseDown = (e: React.MouseEvent, id: string) => {
     setActiveId(id);
@@ -122,7 +115,14 @@ const MoodBoard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-bubblegum/20 to-electricblue/30 transition-all duration-500">
-      <Navbar onSearch={handleSearch} />
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
+        <div className="container flex items-center justify-between h-16 px-4">
+          <h1 className="text-2xl font-display font-bold text-primary">
+            Style Chronicles
+          </h1>
+        </div>
+      </div>
+      
       <div className="fixed top-4 left-4 z-50">
         <Button 
           variant="outline" 

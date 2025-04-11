@@ -1,23 +1,22 @@
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Home, Globe, MapPin, Info } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
 
 const TrendMap = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    console.log("Searching for:", query);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-mint/20 to-lavender/30 transition-all duration-500">
-      <Navbar onSearch={handleSearch} />
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
+        <div className="container flex items-center justify-between h-16 px-4">
+          <h1 className="text-2xl font-display font-bold text-primary">
+            Style Chronicles
+          </h1>
+        </div>
+      </div>
+      
       <div className="fixed top-4 left-4 z-50">
         <Button 
           variant="outline" 
